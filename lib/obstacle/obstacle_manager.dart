@@ -1,4 +1,5 @@
 import 'dart:collection';
+import 'dart:math';
 
 import 'package:flame/components.dart';
 import 'package:trex_game/obstacle/obstacle.dart';
@@ -37,7 +38,7 @@ class ObstacleManager extends Component with HasGameRef<TRexGame> {
     if (speed == 0) {
       return;
     }
-    var settings=ObstacleTypeSettings.myObstacle;
+    var settings=ObstacleTypeSettings.smallTree;
     // var settings = random.nextBool()
     //     ? ObstacleTypeSettings.cactusSmall
     //     : ObstacleTypeSettings.cactusLarge;
@@ -45,7 +46,9 @@ class ObstacleManager extends Component with HasGameRef<TRexGame> {
     //   settings = ObstacleTypeSettings.cactusSmall;
     // }
 
-    final groupSize = _groupSize(settings);
+    // final groupSize = _groupSize(settings);
+
+    final groupSize = Random().nextInt(3);
     for (var i = 0; i < groupSize; i++) {
       add(Obstacle(settings: settings, groupIndex: i));
       gameRef.score++;

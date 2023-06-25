@@ -8,7 +8,7 @@ import 'package:flame/components.dart';
 enum ObstacleType {
   cactusSmall,
   cactusLarge,
-  myObstacle
+  smallTree,
 }
 
 class ObstacleTypeSettings {
@@ -90,34 +90,24 @@ class ObstacleTypeSettings {
     ],
   );
 
-  static final myObstacle = ObstacleTypeSettings._internal(
-    ObstacleType.cactusLarge,
-    size: Vector2(200.0, 250.0),
-    y: -200.0,
+  static final smallTree = ObstacleTypeSettings._internal(
+    ObstacleType.smallTree,
+    size: Vector2(75.0, 100.0),
+    y: -80.0,
     allowedAt: 800,
     multipleAt: 1500,
     minGap: 120.0,
     minSpeed: 0.0,
     generateHitboxes: () => <ShapeHitbox>[
       RectangleHitbox(
-        position: Vector2(0.0, 26.0),
-        size: Vector2(14.0, 40.0),
-      ),
-      RectangleHitbox(
-        position: Vector2(16.0, 0.0),
-        size: Vector2(14.0, 200.0),
-      ),
-      RectangleHitbox(
-        position: Vector2(0, 0),
-        size: Vector2(20.0, 40.0),
+        position: Vector2(35.0, 0.0),
+        size: Vector2(10.0, 80.0),
       ),
     ],
   );
 
   Sprite sprite(Image spriteImage) {
-    // final imagesLoader = Images();
-    // Image image = await imagesLoader.load('yourImage.png');
-    switch (ObstacleType.myObstacle) {
+    switch (ObstacleType.smallTree) {
       case ObstacleType.cactusSmall:
         return Sprite(
           spriteImage,
@@ -130,7 +120,7 @@ class ObstacleTypeSettings {
           srcPosition: Vector2(652.0, 2.0),
           srcSize: size,
         );
-      case ObstacleType.myObstacle:
+      case ObstacleType.smallTree:
         return Sprite(
           spriteImage,
           srcSize: size,
