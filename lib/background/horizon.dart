@@ -10,19 +10,19 @@ import 'package:trex_game/trex_game.dart';
 class Horizon extends PositionComponent with HasGameRef<TRexGame> {
   Horizon() : super();
 
-  static final Vector2 lineSize = Vector2(1200, 24);
+  static final Vector2 lineSize = Vector2(1200, 50);
   final Queue<SpriteComponent> groundLayers = Queue();
   late final CloudManager cloudManager = CloudManager();
   late final ObstacleManager obstacleManager = ObstacleManager();
 
   late final _softSprite = Sprite(
-    gameRef.spriteImage,
+    gameRef.groundImage,
     srcPosition: Vector2(2.0, 104.0),
     srcSize: lineSize,
   );
 
   late final _bumpySprite = Sprite(
-    gameRef.spriteImage,
+    gameRef.groundImage,
     srcPosition: Vector2(gameRef.spriteImage.width / 2, 104.0),
     srcSize: lineSize,
   );
