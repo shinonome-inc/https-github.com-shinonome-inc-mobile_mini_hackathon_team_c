@@ -22,6 +22,7 @@ class TRexGame extends FlameGame
   ''';
 
   late final Image spriteImage;
+  late final Image groundImage;
 
   @override
   Color backgroundColor() => const Color(0xFFFFFFFF);
@@ -47,6 +48,7 @@ class TRexGame extends FlameGame
   @override
   Future<void> onLoad() async {
     spriteImage = await Flame.images.load('trex.png');
+    groundImage = await Flame.images.load('ground1.png');
     add(horizon);
     add(player);
     add(gameOverPanel);
