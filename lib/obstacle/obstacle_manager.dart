@@ -37,12 +37,13 @@ class ObstacleManager extends Component with HasGameRef<TRexGame> {
     if (speed == 0) {
       return;
     }
-    var settings = random.nextBool()
-        ? ObstacleTypeSettings.cactusSmall
-        : ObstacleTypeSettings.cactusLarge;
-    if (duplicateObstacleCheck(settings.type) || speed < settings.allowedAt) {
-      settings = ObstacleTypeSettings.cactusSmall;
-    }
+    var settings=ObstacleTypeSettings.myObstacle;
+    // var settings = random.nextBool()
+    //     ? ObstacleTypeSettings.cactusSmall
+    //     : ObstacleTypeSettings.cactusLarge;
+    // if (duplicateObstacleCheck(settings.type) || speed < settings.allowedAt) {
+    //   settings = ObstacleTypeSettings.cactusSmall;
+    // }
 
     final groupSize = _groupSize(settings);
     for (var i = 0; i < groupSize; i++) {
