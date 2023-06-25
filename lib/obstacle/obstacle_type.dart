@@ -8,6 +8,7 @@ import 'package:flame/components.dart';
 enum ObstacleType {
   cactusSmall,
   cactusLarge,
+  smallTree,
 }
 
 class ObstacleTypeSettings {
@@ -37,6 +38,7 @@ class ObstacleTypeSettings {
   final double? speedOffset;
 
   static const maxGroupSize = 3.0;
+
 
   final List<ShapeHitbox> Function() generateHitboxes;
 
@@ -88,8 +90,24 @@ class ObstacleTypeSettings {
     ],
   );
 
+  static final smallTree = ObstacleTypeSettings._internal(
+    ObstacleType.smallTree,
+    size: Vector2(75.0, 100.0),
+    y: -80.0,
+    allowedAt: 800,
+    multipleAt: 1500,
+    minGap: 120.0,
+    minSpeed: 0.0,
+    generateHitboxes: () => <ShapeHitbox>[
+      RectangleHitbox(
+        position: Vector2(35.0, 0.0),
+        size: Vector2(10.0, 80.0),
+      ),
+    ],
+  );
+
   Sprite sprite(Image spriteImage) {
-    switch (type) {
+    switch (ObstacleType.smallTree) {
       case ObstacleType.cactusSmall:
         return Sprite(
           spriteImage,
@@ -100,6 +118,11 @@ class ObstacleTypeSettings {
         return Sprite(
           spriteImage,
           srcPosition: Vector2(652.0, 2.0),
+          srcSize: size,
+        );
+      case ObstacleType.smallTree:
+        return Sprite(
+          spriteImage,
           srcSize: size,
         );
     }

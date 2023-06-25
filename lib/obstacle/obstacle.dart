@@ -21,7 +21,7 @@ class Obstacle extends SpriteComponent with HasGameRef<TRexGame> {
 
   @override
   Future<void> onLoad() async {
-    sprite = settings.sprite(gameRef.spriteImage);
+    sprite = settings.sprite(gameRef.myObstacleImage);
     x = gameRef.size.x + width * groupIndex;
     y = settings.y;
     gap = computeGap(_gapCoefficient, gameRef.currentSpeed);
