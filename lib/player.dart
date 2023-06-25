@@ -2,8 +2,8 @@ import 'package:flame/collisions.dart';
 import 'package:flame/components.dart';
 import 'package:trex_game/trex_game.dart';
 
+// enum PlayerState { crashed, jumping, running, waiting }
 enum PlayerState { crashed, jumping, running, waiting }
-
 class Player extends SpriteAnimationGroupComponent<PlayerState>
     with HasGameRef<TRexGame>, CollisionCallbacks {
   Player() : super(size: Vector2(90, 88));
@@ -22,7 +22,6 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
 
   @override
   Future<void> onLoad() async {
-    // Body hitbox
     add(
       RectangleHitbox.relative(
         Vector2(0.7, 0.6),
@@ -34,31 +33,75 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     add(
       RectangleHitbox.relative(
         Vector2(0.45, 0.35),
+
         position: Vector2(width / 2, 0),
         parentSize: size,
       ),
     );
-    animations = {
+    animations= {
       PlayerState.running: _getAnimation(
-        size: Vector2(88.0, 90.0),
-        frames: [Vector2(1514.0, 4.0), Vector2(1602.0, 4.0)],
-        stepTime: 0.2,
-      ),
+          size: Vector2(400, 300),
+          frames: [Vector2(0,0)],
+          // stepTime: 0.2,
+        ),
       PlayerState.waiting: _getAnimation(
-        size: Vector2(88.0, 90.0),
-        frames: [Vector2(76.0, 6.0)],
+        size: Vector2(400, 300),
+        frames: [Vector2(0,0)],
+        // stepTime: 0.2,
       ),
       PlayerState.jumping: _getAnimation(
-        size: Vector2(88.0, 90.0),
-        frames: [Vector2(1339.0, 6.0)],
+        size: Vector2(400, 300),
+        frames: [Vector2(0,0)],
+        // stepTime: 0.2,
       ),
       PlayerState.crashed: _getAnimation(
-        size: Vector2(88.0, 90.0),
-        frames: [Vector2(1782.0, 6.0)],
+        size: Vector2(400, 300),
+        frames: [Vector2(0,0)],
+        // stepTime: 0.2,
       ),
     };
     current = PlayerState.waiting;
   }
+
+  // @override
+  // Future<void> onLoad() async {
+  //   // Body hitbox
+  //   add(
+  //     RectangleHitbox.relative(
+  //       Vector2(0.7, 0.6),
+  //       position: Vector2(0, height / 3),
+  //       parentSize: size,
+  //     ),
+  //   );
+  //   // Head hitbox
+  //   add(
+  //     RectangleHitbox.relative(
+  //       Vector2(0.45, 0.35),
+  //       position: Vector2(width / 2, 0),
+  //       parentSize: size,
+  //     ),
+  //   );
+  //   animations = {
+  //     PlayerState.running: _getAnimation(
+  //       size: Vector2(88.0, 90.0),
+  //       frames: [Vector2(1514.0, 4.0), Vector2(1602.0, 4.0)],
+  //       stepTime: 0.2,
+  //     ),
+  //     PlayerState.waiting: _getAnimation(
+  //       size: Vector2(88.0, 90.0),
+  //       frames: [Vector2(76.0, 6.0)],
+  //     ),
+  //     PlayerState.jumping: _getAnimation(
+  //       size: Vector2(88.0, 90.0),
+  //       frames: [Vector2(1339.0, 6.0)],
+  //     ),
+  //     PlayerState.crashed: _getAnimation(
+  //       size: Vector2(88.0, 90.0),
+  //       frames: [Vector2(1782.0, 6.0)],
+  //     ),
+  //   };
+  //   current = PlayerState.waiting;
+  // }
 
   int jumpCount = 0;
   void jump(double speed) {
@@ -123,7 +166,7 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
       frames
           .map(
             (vector) => Sprite(
-              gameRef.spriteImage,
+              gameRef.playerImage,
               srcSize: size,
               srcPosition: vector,
             ),

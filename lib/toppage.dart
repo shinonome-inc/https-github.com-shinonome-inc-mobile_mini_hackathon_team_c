@@ -1,8 +1,6 @@
+import 'package:flame/game.dart';
 import 'package:flutter/material.dart';
-
-void main() {
-  runApp(const MyApp());
-}
+import 'package:trex_game/trex_game.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -52,9 +50,14 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             Column(
               children: [
-                Image.asset('imp_1.png'),
+                Image.asset('images/dinosaur.png'),
                 OutlinedButton(
-                  onPressed: () {/* ボタンが押せる時 */},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => GameWidget(game: TRexGame())),
+                    );
+                  },
                   style: OutlinedButton.styleFrom(
                     backgroundColor: Colors.blue.shade50,
                     primary: Colors.purple,

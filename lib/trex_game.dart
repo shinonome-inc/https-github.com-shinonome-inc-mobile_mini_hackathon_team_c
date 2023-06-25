@@ -24,6 +24,7 @@ class TRexGame extends FlameGame
   late final Image spriteImage;
   late final Image myObstacleImage;
   late final Image groundImage;
+  late final Image playerImage;
 
   @override
   Color backgroundColor() => const Color(0xFFFFFFFF);
@@ -51,9 +52,11 @@ class TRexGame extends FlameGame
     spriteImage = await Flame.images.load('trex.png');
     myObstacleImage = await Flame.images.load('tree_seichou08.png');
     groundImage = await Flame.images.load('ground1.png');
+    playerImage= await Flame.images.load('tyrannosaurus.png');
     add(horizon);
     add(player);
     add(gameOverPanel);
+
 
     const chars = '0123456789HI ';
     final renderer = SpriteFontRenderer.fromFont(
@@ -70,7 +73,7 @@ class TRexGame extends FlameGame
     );
     add(
       scoreText = TextComponent(
-        position: Vector2(20, 20),
+        position: Vector2(20, 50),
         textRenderer: renderer,
       ),
     );
