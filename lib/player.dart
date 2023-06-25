@@ -60,13 +60,19 @@ class Player extends SpriteAnimationGroupComponent<PlayerState>
     current = PlayerState.waiting;
   }
 
+  int jumpCount = 0;
   void jump(double speed) {
     if (current == PlayerState.jumping) {
-      return;
+      if (jumpCount < 2) {
+        current = PlayerState.jumping;
+        jumpCount++;
+        _jumpVelocity = initialJumpVelocity - (speed / 500);
+      }
+    } else {
+      current = PlayerState.jumping;
+      jumpCount = 1;
+      _jumpVelocity = initialJumpVelocity - (speed / 500);
     }
-
-    current = PlayerState.jumping;
-    _jumpVelocity = initialJumpVelocity - (speed / 500);
   }
 
   void reset() {
