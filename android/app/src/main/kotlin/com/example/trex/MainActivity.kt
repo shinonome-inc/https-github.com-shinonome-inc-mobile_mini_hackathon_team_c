@@ -1,4 +1,4 @@
-package com.example.padracing
+package com.example.trex
 
 import io.flutter.embedding.android.FlutterActivity
 

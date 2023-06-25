@@ -1,8 +1,9 @@
-import 'package:flutter/material.dart' hide Image, Gradient;
-import 'package:padracing/padracing_widget.dart';
+import 'package:flame/game.dart';
+import 'package:flutter/widgets.dart';
+import 'package:trex_game/trex_game.dart';
 
 void main() {
   runApp(
-    const PadracingWidget(),
+    GameWidget(game: TRexGame()),
   );
 }

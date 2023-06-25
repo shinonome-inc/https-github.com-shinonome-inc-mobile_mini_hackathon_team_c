@@ -1,12 +1,13 @@
-# Padracing
+# T-rex
 
-Padracing is a small racing game to showcase the possibility of running
-Flame and Forge2D in DartPad.
+![https://cdn-images-1.medium.com/max/1600/1*BadLUm5ZzpcS34eTVQAz5g.gif](https://cdn-images-1.medium.com/max/1600/1*BadLUm5ZzpcS34eTVQAz5g.gif)
 
-In this game I took on the challenge to build a game completely without
-assets, since you can't have assets in DartPad (yet).
-I could of course have pulled in network assets, but decided that the
-challenge of not having any assets at all made it more fun.
+The joy of our offline hours recreated with [Flutter](https://github.com/flutter/flutter) and [Flame](https://github.com/flame-engine/flame)
 
-Created by: [Lukas Klingsbo](https://twitter.com/spyd0n)
-([spydon](https://github.com/spydon))
+
+## Article
+
+This was the original article written when the game initially was ported.
+(It is outdated now since it uses a very old version of Flame)
+
+<https://medium.com/@renancaraujo/creating-the-t-rex-game-with-flutter-and-flame-6d01add1ad5b>

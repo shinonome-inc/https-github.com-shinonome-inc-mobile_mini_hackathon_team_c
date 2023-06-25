@@ -1,41 +1,61 @@
-import 'package:flutter/material.dart' hide Image, Gradient;
-import 'package:padracing/menu_card.dart';
-import 'package:padracing/padracing_game.dart';
+import 'dart:ui';
 
-class GameOver extends StatelessWidget {
-  const GameOver(this.game, {super.key});
+import 'package:flame/components.dart';
+import 'package:trex_game/trex_game.dart';
 
-  final PadRacingGame game;
+class GameOverPanel extends Component {
+  bool visible = false;
 
   @override
-  Widget build(BuildContext context) {
-    final textTheme = Theme.of(context).textTheme;
-    return Material(
-      color: Colors.transparent,
-      child: Center(
-        child: Wrap(
-          children: [
-            MenuCard(
-              children: [
-                Text(
-                  'Player ${game.winner!.playerNumber + 1} wins!',
-                  style: textTheme.displayLarge,
-                ),
-                const SizedBox(height: 10),
-                Text(
-                  'Time: ${game.timePassed}',
-                  style: textTheme.bodyLarge,
-                ),
-                const SizedBox(height: 10),
-                ElevatedButton(
-                  onPressed: game.reset,
-                  child: const Text('Restart'),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
+  Future<void> onLoad() async {
+    add(GameOverText());
+    add(GameOverRestart());
+  }
+
+  @override
+  void renderTree(Canvas canvas) {
+    if (visible) {
+      super.renderTree(canvas);
+    }
+  }
+}
+
+class GameOverText extends SpriteComponent with HasGameRef<TRexGame> {
+  GameOverText() : super(size: Vector2(382, 25), anchor: Anchor.center);
+
+  @override
+  Future<void> onLoad() async {
+    sprite = Sprite(
+      gameRef.spriteImage,
+      srcPosition: Vector2(955.0, 26.0),
+      srcSize: size,
     );
+  }
+
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    x = size.x / 2;
+    y = size.y * .25;
+  }
+}
+
+class GameOverRestart extends SpriteComponent with HasGameRef<TRexGame> {
+  GameOverRestart() : super(size: Vector2(72, 64), anchor: Anchor.center);
+
+  @override
+  Future<void> onLoad() async {
+    sprite = Sprite(
+      gameRef.spriteImage,
+      srcPosition: Vector2.all(2.0),
+      srcSize: size,
+    );
+  }
+
+  @override
+  void onGameResize(Vector2 size) {
+    super.onGameResize(size);
+    x = size.x / 2;
+    y = size.y * .75;
   }
 }
